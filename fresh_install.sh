@@ -35,7 +35,7 @@ chsh -s $(which zsh)
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME=""/g' $HOME/.zshrc
 echo "# Setup pure-prompt" >> $HOME/.zshrc
 echo "autoload -U promptinit; promptinit" >> $HOME/.zshrc
-echo "prompt pure"
+echo "prompt pure" >> $HOME/.zshrc
 
 # Generate an RSA public and private key
 ssh-keygen -t rsa -b 4096 -P "" -f "$HOME/.ssh/id_rsa" -q
