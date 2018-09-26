@@ -4,7 +4,7 @@ sudo apt update
 sudo apt upgrade -y
 
 sudo apt install build-essential software-properties-common software-properties-gtk \
-python-software-properties git vim-nox tmux zsh python3.6 python3-distutils -y
+python-software-properties git vim-nox tmux zsh python3 -y
 
 # Install pip3
 curl https://bootstrap.pypa.io/get-pip.py | sudo python3.6
