@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 
+packages=(build-essential software-properties-common software-properties-gtk \
+python-software-properties vim-nox tmux zsh python3)
+
 sudo apt update
 sudo apt upgrade -y
 
-sudo apt install build-essential software-properties-common software-properties-gtk \
-python-software-properties git vim-nox tmux zsh python3 -y
+# Having each package in its own apt install lets other packages install
+# if other can't
+for i in ${packages[@]}; do
+  sudo apt install ${i} -y
+done
 
 # Install pip3
 curl https://bootstrap.pypa.io/get-pip.py | sudo python3.6
@@ -22,14 +28,15 @@ sudo apt install apt-transport-https -y
 sudo apt update
 sudo apt install code -y
 
+# Install elementary tweaks
+sudo add-apt-repository ppa:philip.scott/elementary-tweaks && sudo apt-get update
+sudo apt-get install elementary-tweaks
+
 # Install tldr
 sudo npm install -g tldr --allow-root --unsafe-perm=true
 
 # Install Pure prompt for zsh
 sudo npm install --global pure-prompt --allow-root --unsafe-perm=true
-
-# Change the default shell to zsh
-chsh -s $(which zsh)
 
 # Set pure-prompt stuff in .zshrc
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME=""/g' $HOME/.zshrc
@@ -48,4 +55,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 # Add it to our plugins
 sed -i 's/^plugins=(/plugins=(\n\tzsh-syntax-highlighting/g' $HOME/.zshrc
-source $HOME/.zshrc
+#source $HOME/.zshrc
+
+# Change the default shell to zsh
+chsh -s $(which zsh)
