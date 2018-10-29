@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 packages=(build-essential software-properties-common software-properties-gtk \
-python-software-properties vim-nox tmux zsh python3)
+python-software-properties vim-nox tmux zsh python3 ubuntu-restricted-extras)
 
 sudo apt update
 sudo apt upgrade -y
