@@ -13,12 +13,11 @@ for i in ${packages[@]}; do
 done
 
 # Install pip3
-curl https://bootstrap.pypa.io/get-pip.py | sudo python3.6
+curl https://bootstrap.pypa.io/get-pip.py | sudo python3
 
 # Install NodeJS
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt update
-sudo apt install -y nodejs
+curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs
 
 # Install VSCode
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
